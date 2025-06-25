@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects</title>
+  <style>
+    body {
+      background: #043139;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+    }
+    .category-btn {
+      padding: 12px 24px;
+      margin: 10px 8px;
+      background: rgb(6, 160, 220);
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .category-btn:hover {
+      background: cyan;
+      color: black;
+      box-shadow: 0 0 10px cyan;
+    }
+    .projects-container {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      min-height: 150px;
+    }
+    .project-btn {
+      padding: 15px 25px;
+      background: rgb(6, 160, 220);
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      min-width: 180px;
+      transition: 0.3s;
+      display: none;
+      opacity: 0;
+    }
+    .project-btn.show {
+      display: inline-block;
+      opacity: 1;
+      animation: fadeIn 0.8s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h1{
+      color:aqua;
+    }
+    .btn-box{
+    width: 150px;
+    height:auto;
+    border-radius: 10px;
+    border:2px solid #090909;
+    margin-top: 100px;
+    background-color: aqua;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 19px;
+  
+
+  }
+  .btn-box:hover{
+    box-shadow: 0 0 5px cyan,
+    0 0 25px cyan,  0 0 50px cyan,
+    0 0 200px cyan,  0 0 200px cyan
+  }
+  </style>
+</head>
+<body>
+
+  <h1><span><u>Projects</u></span><br><br>
+    <div id="categoryButtons">
+        <a href="js projects.html" class="category-btn">Javascript</a><br> 
+        <a href="wordpress-projects.html" class="category-btn">Wordpress</a><br>
+        <a href="Bootstrap-projects.html" class="category-btn">Bootstrap</a><br>
+        <a href="photoshop-projects.html" class="category-btn">Photoshop</a><br>
+        <a href="Illustrator-projects.html" class="category-btn">Illustrator</a><br>
+      <a href="figma.html" class="category-btn">Figma</a><br> 
+       <a href="AdobeXD.html" class="category-btn">Adobe XD</a><br> <br><br>
+         <a href="contacts.html" class="btn-box fade-in delay-5">More About Me</a>
+      </div> 
+      
+      <script>
+    function getCategoryFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('category');
+    }
+
+    function showProjects(category) {
+      const projectButtons = document.querySelectorAll('.project-btn');
+      projectButtons.forEach(btn => {
+        btn.classList.remove('show');
+        if (btn.getAttribute('data-category') === category) {
+          btn.classList.add('show');
+        }
+      });
+    }
+
+  
+    const category = getCategoryFromUrl();
+    if (category) {
+      showProjects(category);
+    } else {
+     
+      document.querySelector('.projects-container').innerHTML = '<p style="color:#ccc; font-size:18px;">Please select a category above to see projects.</p>';
+    }
+    
+  </script>
+
+</body>
+</html>
